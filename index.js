@@ -1,4 +1,4 @@
-const { app }= require('./app.js');
-const vegryo= app;
+const { app } = require("./app.js");
+const vegryo = app;
 
-module.exports={vegryo};
+module.exports = { vegryo };

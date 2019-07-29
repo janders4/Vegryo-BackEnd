@@ -1,15 +1,8 @@
-const admin = require('firebase-admin');
-const { Router }= require('express');
-const serviceAccount = require ('./serviceAccountKey.json');
-const {getAllCrops} = require('/home/natasafi/Desktop/Vegryo-BackEnd/controllers/crops.js')
+const express = require("express");
+const { getAllCrops } = require("../controllers/crops");
 
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: 'https://vegryo-7ee13.firebaseio.com'
-});
+const router = express.Router();
 
-const db=admin.firestore();
-const router= Router();
+router.route("/crops").get(getAllCrops);
 
-router.get('/crops', getAllCrops)
-});
+module.exports = { router };
