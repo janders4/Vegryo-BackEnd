@@ -12,4 +12,4 @@ const serviceAccount = {
   client_x509_cert_url:
     "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-dq7ju%40vegryo-7ee13.iam.gserviceaccount.com"
 };
-const admin = require("firebase-admin");
+module.exports = { serviceAccount };
