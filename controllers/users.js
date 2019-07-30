@@ -28,7 +28,7 @@ exports.getUserById = async (req, res, next) => {
       .doc(id)
       .get();
     if (!user.exists) {
-      throw new Error("User does not exists");
+      throw new Error("User does not exist");
     }
     res.json({
       id: user.id,
@@ -48,8 +48,8 @@ exports.addNewUser = async (req, res, next) => {
     const user = await db
       .collection("Users")
       .doc(userID)
-      .set(data);
-    res.json({ id: userID, data: data });
+      .add(data);
+    res.json({ userID, data });
   } catch (error) {
     next(error);
   }
@@ -58,17 +58,17 @@ exports.addNewUser = async (req, res, next) => {
 exports.editUserById = async (req, res, next) => {
   try {
     const id = req.params.userid;
-    const patchedUser = req.body.text;
+    //const patchedUser = req.body.text;
+    const data = req.body.text;
     if (!id) throw new Error("id is blank");
-    if (!patchedUser) throw new Error("User is blank");
-    const data = { patchedUser };
+    if (!data) throw new Error("User is blank");
     const user = await db
       .collection("Users")
       .doc(id)
-      .set(data, { merge: true });
+      .update(data, { merge: true });
     res.json({
-      id: user.id,
-      data: user.data
+      id,
+      data
     });
   } catch (error) {
     next(error);
