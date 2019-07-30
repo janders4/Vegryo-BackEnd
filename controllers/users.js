@@ -44,12 +44,11 @@ exports.addNewUser = async (req, res, next) => {
     const newUser = req.body.text;
     const userID = req.body.id;
     if (!newUser || !userID) throw new Error("newUser is blank");
-    const data = { newUser };
     const user = await db
       .collection("Users")
       .doc(userID)
-      .add(data);
-    res.json({ userID, data });
+      .set(newUser);
+    res.json({ userID, newUser });
   } catch (error) {
     next(error);
   }
@@ -58,7 +57,6 @@ exports.addNewUser = async (req, res, next) => {
 exports.editUserById = async (req, res, next) => {
   try {
     const id = req.params.userid;
-    //const patchedUser = req.body.text;
     const data = req.body.text;
     if (!id) throw new Error("id is blank");
     if (!data) throw new Error("User is blank");
