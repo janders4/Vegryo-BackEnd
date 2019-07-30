@@ -38,3 +38,19 @@ exports.getUserById = async (req, res, next) => {
     next(error);
   }
 };
+
+exports.addNewUser = async (req, res, next) => {
+  try {
+    const newUser = req.body.text;
+    const userID = req.body.id;
+    if (!newUser || !userID) throw new Error("newUser is blank");
+    const data = { newUser };
+    const user = await db
+      .collection("Users")
+      .doc(userID)
+      .set(data);
+    res.json({ id: userID, data: data });
+  } catch (error) {
+    next(error);
+  }
+};
