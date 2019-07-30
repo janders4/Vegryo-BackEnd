@@ -74,3 +74,15 @@ exports.editUserById = async (req, res, next) => {
     next(error);
   }
 };
+
+exports.deleteUserById = async (req,res,next)=>{
+  try{
+    const id = req.params.userid;
+        if (!id) throw new Error('id is blank');
+        await db.collection('Users').doc(id).delete();
+        res.json({
+            id
+  }catch (error){
+    next(error);
+  }
+}
