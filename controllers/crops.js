@@ -25,20 +25,22 @@ exports.getAllCrops = async (req, res, next) => {
   }
 };
 
-exports.getCropById = async (req,res,next)=>{
-  try{
-    const id= req.params.cropid;
-    if(!id) throw new Error ('id is blank');
-    const crop = await db.collection('crops').doc(id).get();
-    if(!crop.exists){
-      throw new Error('Crop does not exist')
+exports.getCropById = async (req, res, next) => {
+  try {
+    const id = req.params.cropid;
+    if (!id) throw new Error("id is blank");
+    const crop = await db
+      .collection("crops")
+      .doc(id)
+      .get();
+    if (!crop.exists) {
+      throw new Error("Crop does not exist");
     }
     res.json({
       id: crop.id,
       data: crop.data()
-    })
+    });
+  } catch (error) {
+    next(error);
   }
-  catch(error){
-    next(error)
-  }
-}
+};
