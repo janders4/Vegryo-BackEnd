@@ -3,7 +3,8 @@ const { getAllCrops } = require("../controllers/crops");
 const {
   getUserById,
   getAllUsers,
-  addNewUser
+  addNewUser,
+  editUserById
 } = require("../controllers/users");
 
 const router = express.Router();
@@ -13,6 +14,11 @@ router
   .route("/users")
   .get(getAllUsers)
   .post(addNewUser);
-router.route("/users/:userid").get(getUserById).patch(editUserById).delete(deleteUserById);
+router
+  .route("/users/:userid")
+  .get(getUserById)
+  .patch(editUserById);
+
+// .delete(deleteUserById);
 
 module.exports = { router };
