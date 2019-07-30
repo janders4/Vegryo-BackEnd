@@ -28,7 +28,7 @@ exports.getUserById = async (req, res, next) => {
       .doc(id)
       .get();
     if (!user.exists) {
-      throw new Error("User does not exists");
+      throw new Error("User does not exist");
     }
     res.json({
       id: user.id,
