@@ -1,4 +1,5 @@
 const express = require("express");
+const { getEndPoints } = require("../controllers/endPoints");
 const { getAllCrops, getCropById } = require("../controllers/crops");
 const {
   getUserById,
@@ -9,6 +10,8 @@ const {
 } = require("../controllers/users");
 
 const router = express.Router();
+
+router.route("/").get(getEndPoints);
 
 router.route("/crops").get(getAllCrops);
 router.route("/crops/:cropid").get(getCropById);

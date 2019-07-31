@@ -1,0 +1,100 @@
+{
+  "GET /api": {
+    "description": "serves up a json representation of all the available endpoints of api"
+  },
+  "GET /users": {
+    "description": "serves up all users in an array"
+  },
+  "GET /users/:userid": {
+    "description": "serves up an object for the specific user supplied in the parametric endpoint",
+    "example request": "https://us-central1-test-push-notifications-7e737.cloudfunctions.net/vegryo/api/users/Old%20McDonald",
+    "example response": {
+      "id": "Old McDonald",
+      "data": {
+        "GardenLength": 200,
+        "Garden": {
+          "Carrot": {
+            "Quantity": 10,
+            "DatePlanted": {
+              "_seconds": 1563231600,
+              "_nanoseconds": 0
+            }
+          },
+          "Potato": {
+            "Quantity": 10,
+            "DatePlanted": {
+              "_seconds": 1562153400,
+              "_nanoseconds": 0
+            }
+          }
+        },
+        "UserName": "McD86",
+        "GardenWidth": 200,
+        "Name": "Old McDonald",
+        "email": "oldmcd@email.com",
+        "GardenLayout": [""]
+      }
+    }
+  },
+  "POST /users": {
+    "description": "adds a new user to the database",
+    "example request": {
+      "id": "John12",
+      "text": {
+        "Name": "John12122",
+        "UserName": "John2dwadwa3"
+      }
+    },
+    "example response": {
+      "userID": "John12",
+      "newUser": {
+        "Name": "John12122",
+        "UserName": "John2dwadwa3"
+      }
+    }
+  },
+  "PATCH /Users/:userid": {
+    "description": "edits or adds to the information stored on an existing user in the database",
+    "example request": {
+      "text": {
+        "Name": "John12122",
+        "DOB": 120987,
+        "UserName": "John2dwadwa3"
+      }
+    },
+    "example response": {
+      "id": "John12",
+      "data": {
+        "DOB": 121212
+      }
+    }
+  },
+  "DELETE /user/:userid": {
+    "description": "removes a user from the database specified by the parametric end point",
+    "example request": "https://us-central1-test-push-notifications-7e737.cloudfunctions.net/vegryo/api/users/John12",
+    "example response": {
+      "id": "John12"
+    }
+  },
+  "GET /crops": {
+    "description": "returns an array of all vegetable objects in the database",
+    "example request": "https://us-central1-test-push-notifications-7e737.cloudfunctions.net/vegryo/api/crops",
+    "example response": [
+      { "id": "Broccoli", "data": { "info": "vegetable info" } },
+      {
+        "id": "Carrot",
+        "data": {
+          "info": "vegetable info"
+        }
+      }
+    ]
+  },
+  "GET /crops/:cropid": {
+    "description": "returns a crop object specified by the parametric end point",
+    "example request": "https://us-central1-test-push-notifications-7e737.cloudfunctions.net/vegryo/api/crops/carrot",
+    "example response": {
+      "id": "Carrot",
+      "data": { "info": "vegetable info" }
+    }
+  }
+}
