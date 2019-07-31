@@ -13,7 +13,7 @@ exports.getAllCrops = async (req, res, next) => {
   try {
     const veggies = await db.collection("crops").get();
     const crops = [];
-    veggies.forEach(veggie => {
+    veggies.forEach((veggie) => {
       crops.push({
         id: veggie.id,
         data: veggie.data()
