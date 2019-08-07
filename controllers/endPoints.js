@@ -1,7 +1,3 @@
-// const admin = require("firebase-admin");
-
-// const { serviceAccount } = require("../private");
-
 const endPoints = require("../endPoints.json");
 
 exports.getEndPoints = async (req, res, next) => {

@@ -8,6 +8,7 @@ const {
   editUserById,
   deleteUserById
 } = require("../controllers/users");
+const { getImageById } = require("../controllers/images");
 
 const router = express.Router();
 
@@ -26,5 +27,7 @@ router
   .get(getUserById)
   .patch(editUserById)
   .delete(deleteUserById);
+
+router.route("/vegetableimages/:vegetable").get(getImageById);
 
 module.exports = { router };
