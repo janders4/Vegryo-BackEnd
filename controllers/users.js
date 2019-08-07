@@ -1,7 +1,7 @@
 const admin = require("firebase-admin");
+const db = admin.firestore();
 
 const { serviceAccount } = require("../private");
-const db = admin.firestore();
 
 exports.getAllUsers = async (req, res, next) => {
   try {

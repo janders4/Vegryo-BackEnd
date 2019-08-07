@@ -1,3 +1,6 @@
+const admin = require("firebase-admin");
+const db = admin.firestore();
+
 exports.getImageById = async (req, res, next) => {
   try {
     const id = req.params.vegetable;
@@ -10,8 +13,8 @@ exports.getImageById = async (req, res, next) => {
       throw new Error("Vegetable does not exist");
     }
     res.json({
-      id: crop.id,
-      data: crop.data()
+      id: vegImage.id,
+      data: vegImage.data()
     });
   } catch (error) {
     next(error);

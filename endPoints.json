@@ -96,5 +96,16 @@
       "id": "Carrot",
       "data": { "info": "vegetable info" }
     }
+  },
+
+  "Get /vegetableimages/:vegetable": {
+    "description": "returns a path to an image of an object stored in Firebase storage on a parametric end point",
+    "example request": "https://us-central1-test-push-notifications-7e737.cloudfunctions.net/vegryo/api/vegetableimages/carrot",
+    "example response": {
+      "id": "Carrot",
+      "data": {
+        "address": "https://firebasestorage.googleapis.com/v0/b/vegryo-7ee13.appspot.com/o/carrot75.png?alt=media&token=d0dabcbe-6ee1-4228-b2a7-4726dc68c82a"
+      }
+    }
   }
 }
